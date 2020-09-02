@@ -3,18 +3,18 @@ services:
   - docker 
 
 before_install:
-  - docker build -t lohithmm/docker-react -f Dockerfile.dev .
+  - docker build -t lohithmm/docker-react-ui -f Dockerfile.dev .
 
 script: 
-  -  docker run -e CI=true lohithmm/docker-react  npm run test
+  -  docker run -e CI=true lohithmm/docker-react-ui  npm run test
 
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"
-  app: "docker-react"
+  app: "docker-react-ui"
   env: "DockerReact-env"
-  bucket_name: "elasticbeanstalk-sa-east-1-739292332581"
-  bucket_path: "docker-react"
+  bucket_name: "elasticbeanstalk-us-east-2-124736381087"
+  bucket_path: "docker-react-ui"
   on:
     branch: master
   access_key_id: 
